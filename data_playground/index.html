@@ -17,17 +17,16 @@ $.ajax({
       "$$app_token" : "Qx60uJ2thQw7t4xTER5ltpIdQ"
     }
 }).done(function(data) {
-  alert("Retrieved " + data[0]["Condition"]+ " records from the dataset!");
+  alert("Condition " + data[0]["condition"]+ " with score" + data[0]["score"]);
   console.log(data);
+  document.getElementById("lmao").innerHTML = data[0]["condition"];
 });
 
 </script>
 </head>
 <body>
 
-<p>If you click on me, I will disappear.</p>
-<p>Click me away!</p>
-<p>Click me too!</p>
+<div id="lmao"></div>
 
 </body>
 </html>
