@@ -3,23 +3,26 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-$(document).ready(function(){
-    $("p").click(function(){
-        $(this).hide();
-    });
-});
 
+var output = "";
 $.ajax({
-    url: "https://data.medicare.gov/resource/uz46-mfb4",
+    url: "https://data.medicare.gov/resource/3z8n-wcgr.json?measure_id=OP_20",
     type: "GET",
     data: {
       "$limit" : 5000,
       "$$app_token" : "Qx60uJ2thQw7t4xTER5ltpIdQ"
     }
 }).done(function(data) {
-  alert("Condition " + data[0]["condition"]+ " with score" + data[0]["score"]);
   console.log(data);
-  document.getElementById("lmao").innerHTML = data[0]["condition"];
+  for (var hos in data){
+    var obj = data[hos];
+    alert( "location = " + obj["score"]); // score, location_address
+    // for(var prop in obj){
+    //   alert(prop + " = " + obj[prop]);
+    // }
+  }
+
+  document.getElementById("lmao").innerHTML = data[0];
 });
 
 </script>
